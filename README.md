@@ -16,6 +16,7 @@ type Battle {
   attacker: User!
   defender: User!
   gold_stolen_ratio: Percentage!
+  gold_stolen: BigInteger!
 }
 ````
 
