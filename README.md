@@ -10,6 +10,14 @@ composer require olivernybroe/lighthouse-math-scalars
 You can use the provided scalars just like any other type in your schema definition.  
 The scalars are automatically registered in Lighthouse.
 
+````graphql
+type Battle {
+  id: ID!
+  attacker: User!
+  defender: User!
+  gold_stolen_ratio: Percentage!
+}
+````
 
 ## Scalars
 
