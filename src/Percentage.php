@@ -12,6 +12,13 @@ use GraphQL\Utils\Utils;
  */
 class Percentage extends ScalarType
 {
+    public $description = <<<TXT
+        The `Percentage` scalar type represents a percentage as a decimal number.
+        
+        When used as input, the value is input as an integer. Meaning 80% is in input as 80.
+        When used as a return type, the value is shown as a decimal number. Meaning 80% will become 0.8
+        TXT;
+
     /**
      * Serializes an internal value to include in a response.
      *

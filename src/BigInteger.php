@@ -11,7 +11,7 @@ use GraphQL\Type\Definition\ScalarType;
 class BigInteger extends ScalarType
 {
     public $description = <<<TXT
-        The `BigInteger`sclar type represents non-fractional signed whole numberic values. BigInteger has no max size.
+        The `BigInteger` scalar type represents non-fractional signed whole numeric values. BigInteger has no max size.
         
         If the value is smaller than (2^63) then it is represented as a integer.
         In case the value is higher than (2^63) it is represented as a string.
