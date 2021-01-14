@@ -7,6 +7,7 @@ use GraphQL\Type\Definition\ScalarType;
 
 /**
  * Read more about scalars here http://webonyx.github.io/graphql-php/type-system/scalar-types/
+ * @internal
  */
 class BigIntegerDynamic extends ScalarType
 {

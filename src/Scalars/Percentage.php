@@ -9,6 +9,7 @@ use GraphQL\Utils\Utils;
 
 /**
  * Read more about scalars here http://webonyx.github.io/graphql-php/type-system/scalar-types/
+ * @internal
  */
 class Percentage extends ScalarType
 {
