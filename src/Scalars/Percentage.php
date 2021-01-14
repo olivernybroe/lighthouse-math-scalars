@@ -1,6 +1,6 @@
 <?php
 
-namespace OliverNybroe\LighthouseMathScalars;
+namespace OliverNybroe\LighthouseMathScalars\Scalars;
 
 use GraphQL\Error\Error;
 use GraphQL\Language\AST\IntValueNode;

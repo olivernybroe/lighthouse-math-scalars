@@ -1,6 +1,6 @@
 <?php
 
-namespace OliverNybroe\LighthouseMathScalars;
+namespace OliverNybroe\LighthouseMathScalars\Scalars;
 
 use Brick\Math\Exception\IntegerOverflowException;
 use GraphQL\Type\Definition\ScalarType;
@@ -8,39 +8,31 @@ use GraphQL\Type\Definition\ScalarType;
 /**
  * Read more about scalars here http://webonyx.github.io/graphql-php/type-system/scalar-types/
  */
-class BigInteger extends ScalarType
+class BigIntegerString extends ScalarType
 {
     public $description = <<<TXT
-        The `BigInteger` scalar type represents non-fractional signed whole numeric values. BigInteger has no max size.
-        
-        If the value is smaller than (2^63) then it is represented as a integer.
-        In case the value is higher than (2^63) it is represented as a string.
+        The `BigIntegerString` scalar type represents non-fractional signed whole numeric values.
+        The value is always represented as a string and has no max size.
         TXT;
 
     /**
      * Serializes an internal value to include in a response.
      *
      * @param  mixed  $value
-     * @return mixed
      */
-    public function serialize($value)
+    public function serialize($value): string
     {
         $value = \Brick\Math\BigInteger::of($value);
 
-        try {
-            return $value->toInt();
-        } catch (IntegerOverflowException $exception) {
-            return (string) $value;
-        }
+        return (string) $value;
     }
 
     /**
      * Parses an externally provided value (query variable) to use as an input
      *
      * @param  mixed  $value
-     * @return mixed
      */
-    public function parseValue($value)
+    public function parseValue($value): \Brick\Math\BigInteger
     {
         return \Brick\Math\BigInteger::of($value);
     }
@@ -55,9 +47,8 @@ class BigInteger extends ScalarType
      *
      * @param  \GraphQL\Language\AST\Node  $valueNode
      * @param  mixed[]|null  $variables
-     * @return mixed
      */
-    public function parseLiteral($valueNode, ?array $variables = null)
+    public function parseLiteral($valueNode, ?array $variables = null): \Brick\Math\BigInteger
     {
         return \Brick\Math\BigInteger::of($valueNode->value);
     }

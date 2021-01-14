@@ -23,6 +23,15 @@ type Battle {
 ## Scalars
 
 ### BigInteger
+This scalar represents an integer with a size up to `2^63` whereas the built-in `Int` type is limited to `2^31`.
+The value is represented as an integer, not a string when returned.
+
+### BigIntegerString
+This scalar represents an integer with unlimited size. It is always returning the value as a string.  
+`BigInteger` will always return an integer, but is limited to `2^63`, however `BigIntegerString` is great for
+the cases where bigger values than that is required. 
+
+### BigIntegerDynamic
 This scalar represents an integer which is bigger than the built-in `Int` type.  
 The built-in type is limited to `2^31`, however this type has unlimited size as it can use strings to represent it.  
 
@@ -36,3 +45,26 @@ Normally many of us stores percentages as an integer value and divide it by 100 
 This Scalar will do this conversion for you. If used as an input type, it will do the same conversion.  
 
 This scalar is useful for quickly identify for the users of your API, that the type is a percentage.
+
+## Casts
+A set of casts which can be used in a Laravel model to cast attributes.
+
+### BigInteger (`OliverNybroe\LighthouseMathScalars\Casts\BigInteger`)
+When dealing with integers of bigger than `2^63`, a class is needed for doing all the mathematical calculations.  
+For doing that, this package relies on `\Brick\Math\BigInteger` underneath.  
+This cast will cast a value into the `BigInteger` class for you.
+
+```php
+use OliverNybroe\LighthouseMathScalars\Casts\BigInteger as BigIntegerCast;
+use Brick\Math\BigInteger;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+/**
+ * @property BigInteger $gold
+ */
+class User extends Authenticatable
+{
+    protected $casts = [
+        'gold' => BigIntegerCast::class,
+    ];
+```
