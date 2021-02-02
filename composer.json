@@ -3,12 +3,9 @@
     "description": "A collection of custom scalar types for usage with https://github.com/webonyx/graphql-php",
     "type": "library",
     "require": {
-        "php": "^7.4",
+        "php": "^7.4|^8.0",
         "brick/math": "^0.9.1",
         "nuwave/lighthouse": "^5.0"
-    },
-    "require-dev": {
-        "pestphp/pest": "^1.0"
     },
     "license": "MIT",
     "authors": [
@@ -22,11 +19,25 @@
             "OliverNybroe\\LighthouseMathScalars\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "OliverNybroe\\LighthouseMathScalars\\Tests\\": "tests/"
+        }
+    },
     "extra": {
         "laravel": {
             "providers": [
                 "OliverNybroe\\LighthouseMathScalars\\MathScalarServiceProvider"
             ]
         }
+    },
+    "require-dev": {
+        "pestphp/pest": "^1.0"
+    },
+    "scripts": {
+        "pest:test": "pest --colors=always --stop-on-failure",
+        "test": [
+            "@pest:test"
+        ]
     }
 }
